@@ -6,7 +6,7 @@ Explorations with the creation, composition, and mutation of blocks of ASCII tex
 
 * Samuel A. Rebelsky (starter code).
 * Jake Bell
-* Your name Here
+* Maral Bat-Erdene
 
 **Notes for the reader**
 
