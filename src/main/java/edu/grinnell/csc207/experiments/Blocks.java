@@ -7,6 +7,7 @@ import edu.grinnell.csc207.blocks.HComp;
 import edu.grinnell.csc207.blocks.Line;
 import edu.grinnell.csc207.blocks.Lines;
 import edu.grinnell.csc207.blocks.Rect;
+import edu.grinnell.csc207.blocks.Surrounded;
 import edu.grinnell.csc207.blocks.VComp;
 import edu.grinnell.csc207.blocks.VAlignment;
 
@@ -16,8 +17,8 @@ import java.io.PrintWriter;
  * Experiments with ASCII blocks.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
- * @author Your Name Here
+ * @author Jake Bell
+ * @author Maral Bat-Erdene
  */
 public class Blocks {
   /**
@@ -144,6 +145,10 @@ public class Blocks {
         new VComp(HAlignment.CENTER, new AsciiBlock[] {v1, v7, v11, v19}));
     figure(pen, "Left composition",
         new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
+    
+    separator(pen);
+    pen.printf("b10 = new Surrounded(\"A\") with '*'\n\n");
+    AsciiBlock.print(pen, new Surrounded(new Line("Hello"), 'p'));
 
     pen.close();
   } // main(String[])
