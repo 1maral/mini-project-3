@@ -98,12 +98,10 @@ public class Surrounded implements AsciiBlock {
    */
 
   public boolean eqv(AsciiBlock other) {
-    System.out.println("here in 1st");
     return ((other instanceof Surrounded) && (this.eqv((Surrounded) other)));
   } // eqv(AsciiBlock)
 
   public boolean eqv(Surrounded other) {
-    System.out.printf("char %s = %s char2", this.surroundChar, other.surroundChar);
     return (this.contents.eqv(other.contents)) && (this.surroundChar.equals(other.surroundChar));
   } // eqv(Surrounded)
 } // class Surrounded

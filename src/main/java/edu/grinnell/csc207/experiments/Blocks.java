@@ -2,6 +2,8 @@ package edu.grinnell.csc207.experiments;
 
 import edu.grinnell.csc207.blocks.AsciiBlock;
 import edu.grinnell.csc207.blocks.Boxed;
+import edu.grinnell.csc207.blocks.Empty;
+import edu.grinnell.csc207.blocks.Grid;
 import edu.grinnell.csc207.blocks.HAlignment;
 import edu.grinnell.csc207.blocks.HComp;
 import edu.grinnell.csc207.blocks.Line;
@@ -149,8 +151,27 @@ public class Blocks {
     separator(pen);
     pen.printf("b10 = new Surrounded(\"A\") with '*'\n\n");
     AsciiBlock.print(pen, new Surrounded(new Line("Hello"), 'p'));
-    AsciiBlock.print(pen, new Surrounded(new Line("Hello"), 'p'));
     pen.println(new Surrounded(new Line("Hello"), 'p').eqv(new Surrounded(new Line("Hello"), 'p')));
+    
+    separator(pen);
+    AsciiBlock.print(pen, new Line("Hello"));
+    pen.println((new Line("Hello")).eqv(new Line("Hello")));
+
+    separator(pen);
+    pen.printf("(new Grid(new Line(\"Hello\"), 3, 4))\n\n");
+    AsciiBlock.print(pen, new Grid(new Line("Hello"), 3, 4));
+    pen.println((new Grid(new Line("Hello"), 3, 4)).eqv(new Grid(new Line("Hello"), 3, 4)));
+    
+    separator(pen);
+    pen.printf("(new Grid(new Boxed(new Line(\"Hello\")), 3, 2))\n\n");
+    AsciiBlock.print(pen, new Grid(new Boxed(new Line("Hello")), 3, 2));
+    pen.println((new Grid(new Boxed(new Empty()), 3, 2)).eqv(new Grid(new Boxed(new Empty()), 3, 2)));
+    
+    separator(pen);
+    pen.printf("(new Grid(new Boxed(new Empty()), 3, 2))\n\n");
+    AsciiBlock.print(pen, (new Grid(new Boxed(new Empty()), 3, 2)));
+    pen.println((new Grid(new Boxed(new Empty()), 3, 2)).eqv(new Grid(new Boxed(new Empty()), 3, 2)));
+    
     pen.close();
   } // main(String[])
 } // class Blocks
