@@ -149,7 +149,8 @@ public class Blocks {
     separator(pen);
     pen.printf("b10 = new Surrounded(\"A\") with '*'\n\n");
     AsciiBlock.print(pen, new Surrounded(new Line("Hello"), 'p'));
-
+    AsciiBlock.print(pen, new Surrounded(new Line("Hello"), 'p'));
+    pen.println(new Surrounded(new Line("Hello"), 'p').eqv(new Surrounded(new Line("Hello"), 'p')));
     pen.close();
   } // main(String[])
 } // class Blocks

@@ -78,8 +78,14 @@ public class Line implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    System.out.println("here in 1st");
+    return ((other instanceof Line) && (this.eqv((Line) other)));
   } // eqv(AsciiBlock)
+
+  public boolean eqv(Line other) {
+    System.out.printf("string 1 %s = string 2 %s", this.line, other.line);
+    return (this.line.equals(other.line));
+  } // eqv(Surrounded)
 
   // +---------------+-----------------------------------------------
   // | Other methods |
