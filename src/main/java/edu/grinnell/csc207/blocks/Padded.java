@@ -86,7 +86,23 @@ public class Padded implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-    throw new Exception("Not yet implemented"); // STUB
+    int h = this.height;
+    if ((i >= 0) && (i < h)) {
+      // Stuff within the box
+      switch(this.halign) {
+        case LEFT:
+          System.out.println("Low level");
+          break;
+        case CENTER:
+           System.out.println("Medium level");
+          break;
+        case RIGHT:
+          System.out.println("High level");
+          break;
+      }
+    } else {
+      throw new Exception("Invalid row " + i);
+    } // if/else
   } // row(int)
 
   /**
@@ -95,7 +111,7 @@ public class Padded implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    return this.height;   // STUB
   } // height()
 
   /**
@@ -104,7 +120,7 @@ public class Padded implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    return this.width;   // STUB
   } // width()
 
   /**
@@ -117,6 +133,21 @@ public class Padded implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return ((other instanceof Padded) && (this.eqv((Padded) other)));
   } // eqv(AsciiBlock)
+
+  /**
+   * Determine if another grid is structurally equivalent to this grid.
+   *
+   * @param other
+   *   The grid to compare to this grid.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *    false otherwise.
+   */
+  public boolean eqv(Padded other) {
+    return ((this.halign.equals(other.halign)) && (this.pad.equals(other.pad)) 
+    && (this.block.eqv(other.block)) && (this.valign.equals(other.valign))
+    && (this.width == other.width) && (this.height == other.height));
+  } // eqv(HFlip)
 } // class Padded

@@ -62,7 +62,7 @@ public class Grid implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-    int h = this.element.height()*this.vreps;
+    int h = this.element.height() * this.vreps;
     if ((i >= 0) && (i < h)) {
       // Stuff within the box
       return ((this.element).row(i % this.element.height())).repeat(this.hreps);

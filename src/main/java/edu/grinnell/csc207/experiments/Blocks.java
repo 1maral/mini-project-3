@@ -8,12 +8,14 @@ import edu.grinnell.csc207.blocks.Empty;
 import edu.grinnell.csc207.blocks.Grid;
 import edu.grinnell.csc207.blocks.HAlignment;
 import edu.grinnell.csc207.blocks.HComp;
+import edu.grinnell.csc207.blocks.HFlip;
 import edu.grinnell.csc207.blocks.Line;
 import edu.grinnell.csc207.blocks.Lines;
 import edu.grinnell.csc207.blocks.Rect;
 import edu.grinnell.csc207.blocks.Surrounded;
 import edu.grinnell.csc207.blocks.VAlignment;
 import edu.grinnell.csc207.blocks.VComp;
+import edu.grinnell.csc207.blocks.VFlip;
 
 /**
  * Experiments with ASCII blocks.
@@ -172,6 +174,26 @@ public class Blocks {
     AsciiBlock.print(pen, (new Grid(new Boxed(new Empty()), 3, 2)));
     pen.println((new Grid(new Boxed(new Empty()), 3, 2)).eqv(new Grid(new Boxed(new Empty()), 3, 2)));
     
+    separator(pen);
+    pen.printf("new HFlip(new Line(\"Hello\")\n\n");
+    AsciiBlock.print(pen, new HFlip(new Line("Hello")));
+    pen.println((new HFlip(new Line("Hello"))).eqv(new HFlip(new Line("Hello"))));
+    
+    separator(pen);
+    pen.printf("new HFlip(new Lines({\"this\", \"and\", \"that\"}))\n\n");
+    AsciiBlock.print(pen, new HFlip(new Lines(new String[] {"this", "and", "that"})));
+    pen.println(
+    (new HFlip(new Lines(new String[] {"Hello", "this"})))
+    .eqv(new HFlip(new Lines(new String[] {"Hello", "this"})))
+    );
+
+    separator(pen);
+    pen.printf("new VFlip(new Lines({\"this\", \"and\", \"that\"}))\n\n");
+    AsciiBlock.print(pen, new VFlip(new Lines(new String[] {"this", "and", "that"})));
+    pen.println(
+    (new VFlip(new Lines(new String[] {"Hello", "this"})))
+    .eqv(new VFlip(new Lines(new String[] {"Hello", "this"})))
+    );
     pen.close();
   } // main(String[])
 } // class Blocks

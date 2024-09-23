@@ -4,7 +4,7 @@ package edu.grinnell.csc207.blocks;
  * A horizontally flipped ASCII block.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Maral Bat-Erdene, Jake Bell
  */
 public class HFlip implements AsciiBlock {
   // +--------+------------------------------------------------------------
@@ -45,7 +45,18 @@ public class HFlip implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-    throw new Exception("Not yet implemented"); // STUB
+    int h = this.block.height();
+    if ((i >= 0) && (i < h)) {
+      // Stuff within the box
+      char[] rowStr = (this.block.row(i)).toCharArray();
+      String revStr = "";
+      for (int x = this.block.width() - 1; x >= 0; x--){
+        revStr += rowStr[x];
+      }
+      return revStr;
+    } else {
+      throw new Exception("Invalid row " + i);
+    } // if/else
   } // row(int)
 
   /**
@@ -54,7 +65,7 @@ public class HFlip implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    return this.block.height();
   } // height()
 
   /**
@@ -63,7 +74,7 @@ public class HFlip implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    return this.block.width();
   } // width()
 
   /**
@@ -76,6 +87,19 @@ public class HFlip implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return ((other instanceof HFlip) && (this.eqv((HFlip) other)));
   } // eqv(AsciiBlock)
+
+  /**
+   * Determine if another grid is structurally equivalent to this grid.
+   *
+   * @param other
+   *   The grid to compare to this grid.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *    false otherwise.
+   */
+  public boolean eqv(HFlip other) {
+    return (this.block.eqv(other.block));
+  } // eqv(HFlip)
 } // class HFlip
