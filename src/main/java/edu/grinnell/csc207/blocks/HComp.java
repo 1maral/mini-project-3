@@ -82,9 +82,9 @@ public class HComp implements AsciiBlock {
             madeline += block.row(i);
         } else if (i >= block.height()) {
             madeline += " ".repeat(block.width());
-        }
-      }
-    }
+        } //if
+      } // for (top)
+    } // if
 
     if (VAlignment.CENTER.equals(this.align)){
       for (AsciiBlock block : this.blocks) {
@@ -97,9 +97,9 @@ public class HComp implements AsciiBlock {
             madeline += block.row(i);
         } else {
             madeline += " ".repeat(block.width());
-        }
-      }
-    }
+        } // if
+      } // for (bottom)
+    } // if
 
     if (VAlignment.BOTTOM.equals(this.align)){
       for (AsciiBlock block : this.blocks) {
@@ -114,7 +114,7 @@ public class HComp implements AsciiBlock {
             madeline += " ".repeat(block.width());
         } // if
       } // for(bottom align)
-    }
+    } // if
     return madeline;
   } // row(int)
 
@@ -128,8 +128,8 @@ public class HComp implements AsciiBlock {
     for (AsciiBlock block : this.blocks) {
       if (block.height() > max) {
           max = block.height();
-      }
-    }
+      } // if
+    } // for (block)
       return max;
   } // height()
 
@@ -143,7 +143,7 @@ public class HComp implements AsciiBlock {
 
     for (AsciiBlock block : this.blocks){
       wid += block.width();
-    }
+    } // for
     return wid;
   } // width()
 
@@ -157,6 +157,19 @@ public class HComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return ((other instanceof HComp) && (this.eqv((HComp) other)));
   } // eqv(AsciiBlock)
+
+  /**
+   * Determine if another HComp is structurally equivalent to this HComp.
+   *
+   * @param other
+   *   The HComp to compare to this HComp.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *    false otherwise.
+   */
+  public boolean eqv(HComp other) {
+    return (this.align == other.align) && (Arrays.equals(this.blocks, other.blocks));
+  } // eqv (HComp)
 } // class HComp
