@@ -206,6 +206,19 @@ public class Blocks {
     separator(pen);
     pen.printf("bottom composition \n");
     AsciiBlock.print(pen, new HComp(VAlignment.BOTTOM, new AsciiBlock[] {a, b, c}));
+
+    separator(pen);
+    pen.printf("left composition \n");
+    AsciiBlock.print(pen,new VComp(HAlignment.LEFT, new AsciiBlock[] {v1, v7, v11, v19}));
+
+    separator(pen);
+    pen.printf("center composition \n");
+    AsciiBlock.print(pen,new VComp(HAlignment.CENTER, new AsciiBlock[] {v1, v7, v11, v19, v1}));
+    
+
+    separator(pen);
+    pen.printf("right composition \n");
+    AsciiBlock.print(pen,new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
     pen.close();
   } // main(String[])
 } // class Blocks

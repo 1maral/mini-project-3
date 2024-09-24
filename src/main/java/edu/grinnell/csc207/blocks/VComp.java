@@ -72,7 +72,34 @@ public class VComp implements AsciiBlock {
    *   if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
-    return "";  // STUB
+    String madeline = "";
+
+    if ((i < 0) || (i >= this.height())) {
+      // Outside of normal bounds
+      throw new Exception("Invalid row " + i);
+    } else if (this.blocks[i].width() == this.width()) {
+      madeline += this.blocks[i].row(0);
+      return madeline;
+    }
+
+
+    if (null != this.align) switch (this.align) {
+      case LEFT:
+        madeline += this.blocks[i].row(0) + " ".repeat(this.width() - this.blocks[i].width());
+        break;
+      case CENTER:
+        int margin = ((this.width() - this.blocks[i].width()) / 2);
+        madeline += " ".repeat((int) Math.floor(margin)) + this.blocks[i].row(0) + " ".repeat((int) Math.ceil(margin));
+        break;
+      case RIGHT:
+        madeline += " ".repeat(this.width() - this.blocks[i].width()) + this.blocks[i].row(0);
+        break;
+      default:
+        madeline = "ERROR: WRONG ALIGNMENT";
+        break;
+      }
+
+    return madeline;
   } // row(int)
 
   /**
@@ -81,7 +108,12 @@ public class VComp implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    int len = 0;
+
+    for (AsciiBlock block : this.blocks){
+      len += block.height();
+    }
+    return len;   // STUB
   } // height()
 
   /**
@@ -90,7 +122,14 @@ public class VComp implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    int wid = 0;
+
+    for (AsciiBlock block : this.blocks) {
+      if (block.width() > wid) {
+        wid = block.width();
+      }
+    }
+    return wid;   // STUB
   } // width()
 
   /**
