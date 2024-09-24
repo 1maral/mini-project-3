@@ -194,6 +194,18 @@ public class Blocks {
     (new VFlip(new Lines(new String[] {"Hello", "this"})))
     .eqv(new VFlip(new Lines(new String[] {"Hello", "this"})))
     );
+
+    separator(pen);
+    pen.printf("top composition \n");
+    AsciiBlock.print(pen, new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c}));
+
+    separator(pen);
+    pen.printf("center composition \n");
+    AsciiBlock.print(pen, new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c}));
+
+    separator(pen);
+    pen.printf("bottom composition \n");
+    AsciiBlock.print(pen, new HComp(VAlignment.BOTTOM, new AsciiBlock[] {a, b, c}));
     pen.close();
   } // main(String[])
 } // class Blocks
