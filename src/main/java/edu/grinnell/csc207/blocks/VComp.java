@@ -127,9 +127,9 @@ public class VComp implements AsciiBlock {
     for (AsciiBlock block : this.blocks) {
       if (block.width() > wid) {
         wid = block.width();
-      }
-    }
-    return wid;   // STUB
+      } // if
+    } // for
+    return wid;
   } // width()
 
   /**
@@ -142,6 +142,19 @@ public class VComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return ((other instanceof VComp) && (this.eqv((VComp) other)));
   } // eqv(AsciiBlock)
+
+  /**
+   * Determine if another VComp is structurally equivalent to this VComp.
+   *
+   * @param other
+   *   The VComp to compare to this VComp.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *    false otherwise.
+   */
+  public boolean eqv(VComp other) {
+    return (this.align == other.align) && (Arrays.equals(this.blocks, other.blocks));
+  } // eqv (VComp)
 } // class VComp
