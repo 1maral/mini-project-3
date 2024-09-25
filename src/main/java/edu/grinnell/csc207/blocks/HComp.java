@@ -73,48 +73,38 @@ public class HComp implements AsciiBlock {
   public String row(int i) throws Exception {
     String madeline = "";
 
-    if (VAlignment.TOP.equals(this.align)){
-      for (AsciiBlock block : this.blocks) {
-        if ((i < 0) || (i >= this.height())) {
-            // Outside of normal bounds
-            throw new Exception("Invalid row " + i);
-        } else if (i < block.height()) {
-            madeline += block.row(i);
-        } else if (i >= block.height()) {
-            madeline += " ".repeat(block.width());
-        } //if
-      } // for (top)
+    if ((i < 0) || (i >= this.height())) {
+      // Outside of normal bounds
+      throw new Exception("Invalid row " + i);
     } // if
 
-    if (VAlignment.CENTER.equals(this.align)){
-      for (AsciiBlock block : this.blocks) {
-        if ((i < 0) || (i >= this.height())) {
-            // Outside of normal bounds
-            throw new Exception("Invalid row " + i);
-        } else if ((i >= Math.floor((this.height() - block.height()) / 2) && (i < block.height() + Math.ceil((this.height() - block.height()) / 2)))){
-            madeline += block.row(i - (int) Math.ceil((this.height() - block.height()) / 2));
-        } else if (block.height() == this.height()) {
-            madeline += block.row(i);
+    for (AsciiBlock block : this.blocks) {
+      if (block.height() == this.height()) {
+        madeline += block.row(i);
+      } // if
+
+      if (VAlignment.TOP.equals(this.align)) {
+        if (i < block.height()) {
+          madeline += block.row(i);
         } else {
-            madeline += " ".repeat(block.width());
-        } // if
-      } // for (bottom)
+          madeline += " ".repeat(block.width());
+        } // else
+      } else if (VAlignment.CENTER.equals(this.align)) {
+        if ((i >= Math.floor((this.height() - block.height()) / 2)
+              && (i < block.height() + Math.ceil((this.height() - block.height()) / 2)))) {
+          madeline += block.row(i - (int) Math.ceil((this.height() - block.height()) / 2));
+        } else {
+          madeline += " ".repeat(block.width());
+        } // else
+      } else if (VAlignment.BOTTOM.equals(this.align)) {
+        if (i >= (this.height() - block.height())) {
+          madeline += block.row(i - (this.height() - block.height()));
+        } else {
+          madeline += " ".repeat(block.width());
+        } // else
+      } // else if
     } // if
 
-    if (VAlignment.BOTTOM.equals(this.align)){
-      for (AsciiBlock block : this.blocks) {
-        if ((i < 0) || (i >= this.height())) {
-            // Outside of normal bounds
-            throw new Exception("Invalid row " + i);
-        } else if (block.height() == this.height()) {
-            madeline += block.row(i);
-        } else if (i >= (this.height() - block.height())) {
-            madeline += block.row(i - (this.height() - block.height()));
-        } else {
-            madeline += " ".repeat(block.width());
-        } // if
-      } // for(bottom align)
-    } // if
     return madeline;
   } // row(int)
 
@@ -127,10 +117,10 @@ public class HComp implements AsciiBlock {
     int max = 0;
     for (AsciiBlock block : this.blocks) {
       if (block.height() > max) {
-          max = block.height();
+        max = block.height();
       } // if
     } // for (block)
-      return max;
+    return max;
   } // height()
 
   /**
@@ -141,7 +131,7 @@ public class HComp implements AsciiBlock {
   public int width() {
     int wid = 0;
 
-    for (AsciiBlock block : this.blocks){
+    for (AsciiBlock block : this.blocks) {
       wid += block.width();
     } // for
     return wid;

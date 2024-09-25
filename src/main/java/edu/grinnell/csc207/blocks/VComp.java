@@ -80,16 +80,17 @@ public class VComp implements AsciiBlock {
     } else if (this.blocks[i].width() == this.width()) {
       madeline += this.blocks[i].row(0);
       return madeline;
-    }
+    } // if
 
 
-    if (null != this.align) switch (this.align) {
+    switch (this.align) {
       case LEFT:
         madeline += this.blocks[i].row(0) + " ".repeat(this.width() - this.blocks[i].width());
         break;
       case CENTER:
         int margin = ((this.width() - this.blocks[i].width()) / 2);
-        madeline += " ".repeat((int) Math.floor(margin)) + this.blocks[i].row(0) + " ".repeat((int) Math.ceil(margin));
+        madeline += " ".repeat((int) Math.floor(margin))
+        + this.blocks[i].row(0) + " ".repeat((int) Math.ceil(margin));
         break;
       case RIGHT:
         madeline += " ".repeat(this.width() - this.blocks[i].width()) + this.blocks[i].row(0);
@@ -97,7 +98,7 @@ public class VComp implements AsciiBlock {
       default:
         madeline = "ERROR: WRONG ALIGNMENT";
         break;
-      }
+      } // switch
 
     return madeline;
   } // row(int)
@@ -110,9 +111,9 @@ public class VComp implements AsciiBlock {
   public int height() {
     int len = 0;
 
-    for (AsciiBlock block : this.blocks){
+    for (AsciiBlock block : this.blocks) {
       len += block.height();
-    }
+    } // for
     return len;   // STUB
   } // height()
 
