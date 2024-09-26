@@ -28,7 +28,7 @@ public class Ladder implements AsciiBlock {
    * Build a new grid with the specified arrangement.
    *
    * @param stepElement
-   *   What the ladder steps will be made of.
+   *   What the ladder steps will be made of, must have height of 1.
    * @param stepRepitions
    *   The number of vertical repetitions in the grid.
    * @param sideRail
@@ -79,7 +79,10 @@ public class Ladder implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-   return ((this.stepRepetitions - 1) * 2) + 1; 
+    if (this.stepElement.width() == 0) {
+      return 0;
+    }
+    return ((this.stepRepetitions - 1) * 2) + 1; 
   } // height()
 
   /**
@@ -88,6 +91,9 @@ public class Ladder implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
+    if (this.stepElement.width() == 0) {
+      return 0;
+    }
     return this.stepElement.width() + 2;   // STUB
   } // width()
 
