@@ -156,6 +156,12 @@ public class VComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(VComp other) {
-    return (this.align == other.align) && (Arrays.equals(this.blocks, other.blocks));
+    boolean arrEqv = true;
+    for (int x = 0; x < blocks.length; x++) {
+      System.out.println("x = " + x);
+      arrEqv = arrEqv && blocks[x].eqv(other.blocks[x]);
+      System.out.println(arrEqv);
+    }
+    return ((this.align == other.align) && arrEqv);
   } // eqv (VComp)
 } // class VComp
