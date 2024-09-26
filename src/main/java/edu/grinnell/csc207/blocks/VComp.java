@@ -168,9 +168,12 @@ public class VComp implements AsciiBlock {
    */
   public boolean eqv(VComp other) {
     boolean arrEqv = true;
-    for (int x = 0; x < Math.min(blocks.length, other.blocks.length); x++) {
+    if ((this.blocks.length != other.blocks.length) || (this.align != other.align)) {
+      return false;
+    } // if
+    for (int x = 0; x < this.blocks.length; x++) {
       arrEqv = arrEqv && blocks[x].eqv(other.blocks[x]);
     }
-    return ((this.align == other.align) && arrEqv);
+    return (arrEqv);
   } // eqv (VComp)
 } // class VComp

@@ -162,11 +162,12 @@ public class HComp implements AsciiBlock {
    */
   public boolean eqv(HComp other) {
     boolean arrEqv = true;
-    for (int x = 0; x < blocks.length; x++) {
-      System.out.println("x = " + x);
-      arrEqv = arrEqv && blocks[x].eqv(other.blocks[x]);
-      System.out.println(arrEqv);
-    }
-    return ((this.align == other.align) && arrEqv);
+    if ((this.blocks.length != other.blocks.length) || (this.align != other.align)) {
+      return false;
+    } // if
+    for (int x = 0; x < this.blocks.length; x++) {
+      arrEqv = arrEqv && this.blocks[x].eqv(other.blocks[x]);
+    } // for
+    return (arrEqv);
   } // eqv (HComp)
 } // class HComp
