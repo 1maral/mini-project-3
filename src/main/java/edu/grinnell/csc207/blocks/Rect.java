@@ -24,7 +24,7 @@ public class Rect implements AsciiBlock {
   // | Constructors |
   // +--------------+
 
-  /**
+  /**Line
    * Build a rectangle.
    *
    * @param ch
@@ -98,8 +98,12 @@ public class Rect implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return ((other instanceof Rect) && (this.eqv((Rect) other)));
   } // eqv(AsciiBlock)
+
+  public boolean eqv(Rect other) {
+    return ((this.row.equals(other.row)) && (this.height == other.height));
+  } // eqv(Rect)
 
   // +---------------+-----------------------------------------------
   // | Other methods |
