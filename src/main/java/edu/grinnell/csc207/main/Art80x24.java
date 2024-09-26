@@ -1,6 +1,9 @@
 package edu.grinnell.csc207.main;
 
 import edu.grinnell.csc207.blocks.AsciiBlock;
+import edu.grinnell.csc207.blocks.Boxed;
+import edu.grinnell.csc207.blocks.Grid;
+import edu.grinnell.csc207.blocks.Lines;
 import edu.grinnell.csc207.blocks.Rect;
 
 import java.io.PrintWriter;
@@ -8,8 +11,8 @@ import java.io.PrintWriter;
 /**
  * Create and print an amazing 80x24 ASCII artwork.
  *
- * @author Your Name Here
- * @author Your Name Here
+ * @author Maral Bat-Erdene
+ * @author Jake Bell
  */
 public class Art80x24 {
   /**
@@ -23,7 +26,9 @@ public class Art80x24 {
    */
   public static void main(String[] args) throws Exception {
     PrintWriter pen = new PrintWriter(System.out, true);
-    AsciiBlock art = new Rect('^', 80, 24);
+    AsciiBlock pattern1 = new Lines(new String[]{"Hello World!", "Nice to meet", "   YOU! :)", "- Maral & Jake"});
+    AsciiBlock pattern2 = new Boxed(pattern1);
+    AsciiBlock art = new Grid(pattern2,5,4);
     AsciiBlock.print(pen, art);
     pen.close();
   } // main(String[])
