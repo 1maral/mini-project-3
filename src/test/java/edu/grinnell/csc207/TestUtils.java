@@ -33,7 +33,7 @@ public class TestUtils {
     } // if
     for (int i = 0; i < block1.height(); i++) {
       try {
-        if (!block1.row(i).equals(block2.row(i))) {
+        if (!((block1.row(i)).equals(block2.row(i)))) {
           return false;
         } // if
       } catch (Exception e) {
