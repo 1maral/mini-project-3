@@ -227,6 +227,8 @@ public class Blocks {
     separator(pen);
     pen.printf("Create a ladder \n");
     AsciiBlock.print(pen, new Ladder(new Line("====="), 3, '|'));
+
+    
     pen.close();
   } // main(String[])
 } // class Blocks

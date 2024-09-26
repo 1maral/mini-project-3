@@ -81,6 +81,7 @@ public class HComp implements AsciiBlock {
     for (AsciiBlock block : this.blocks) {
       if (block.height() == this.height()) {
         madeline += block.row(i);
+        continue;
       } // if
 
       if (VAlignment.TOP.equals(this.align)) {

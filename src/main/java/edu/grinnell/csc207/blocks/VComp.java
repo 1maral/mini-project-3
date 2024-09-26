@@ -73,27 +73,38 @@ public class VComp implements AsciiBlock {
    */
   public String row(int i) throws Exception {
     String madeline = "";
+    int sum = 0;
+    int index = 0;
+    int count = 0;
+
+    for (int j = 0; sum + this.blocks[j].height() <= i; j++) {
+      sum += this.blocks[j].height();
+      count++;
+    }
+
+    index = i - sum;
 
     if ((i < 0) || (i >= this.height())) {
       // Outside of normal bounds
       throw new Exception("Invalid row " + i);
-    } else if (this.blocks[i].width() == this.width()) {
-      madeline += this.blocks[i].row(0);
+    } else if (this.blocks[count].width() == this.width()) {
+      madeline += this.blocks[count].row(index);
       return madeline;
     } // if
 
-
+    
     switch (this.align) {
       case LEFT:
-        madeline += this.blocks[i].row(0) + " ".repeat(this.width() - this.blocks[i].width());
+        madeline += this.blocks[count].row(index) + " ".repeat(this.width() - this.blocks[count].width());
         break;
       case CENTER:
-        int margin = ((this.width() - this.blocks[i].width()) / 2);
-        madeline += " ".repeat((int) Math.floor(margin))
-        + this.blocks[i].row(0) + " ".repeat((int) Math.ceil(margin));
+        madeline += " ".repeat((int) Math.floor((this.width() - this.blocks[count].width()) / 2))
+        + this.blocks[count].row(index) + " ".repeat((int) Math.ceil((double) (this.width() - this.blocks[count].width()) / 2));
+        int checktop = ((int) Math.floor((this.width() - this.blocks[count].width()) / 2));
+        int checkbottom = ((int) Math.ceil((this.width() - this.blocks[count].width()) / 2));
         break;
       case RIGHT:
-        madeline += " ".repeat(this.width() - this.blocks[i].width()) + this.blocks[i].row(0);
+        madeline += " ".repeat(this.width() - this.blocks[count].width()) + this.blocks[count].row(index);
         break;
       default:
         madeline = "ERROR: WRONG ALIGNMENT";
@@ -157,10 +168,8 @@ public class VComp implements AsciiBlock {
    */
   public boolean eqv(VComp other) {
     boolean arrEqv = true;
-    for (int x = 0; x < blocks.length; x++) {
-      System.out.println("x = " + x);
+    for (int x = 0; x < Math.min(blocks.length, other.blocks.length); x++) {
       arrEqv = arrEqv && blocks[x].eqv(other.blocks[x]);
-      System.out.println(arrEqv);
     }
     return ((this.align == other.align) && arrEqv);
   } // eqv (VComp)
