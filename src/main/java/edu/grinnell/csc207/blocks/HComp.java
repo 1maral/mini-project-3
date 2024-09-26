@@ -160,6 +160,12 @@ public class HComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(HComp other) {
-    return (this.align == other.align) && (Arrays.equals(this.blocks, other.blocks));
+    boolean arrEqv = true;
+    for (int x = 0; x < blocks.length; x++) {
+      System.out.println("x = " + x);
+      arrEqv = arrEqv && blocks[x].eqv(other.blocks[x]);
+      System.out.println(arrEqv);
+    }
+    return ((this.align == other.align) && arrEqv);
   } // eqv (HComp)
 } // class HComp

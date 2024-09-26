@@ -198,10 +198,13 @@ public class Blocks {
     separator(pen);
     pen.printf("top composition \n");
     AsciiBlock.print(pen, new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c}));
+    pen.println((new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c})).eqv(new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c})));
 
     separator(pen);
     pen.printf("center composition \n");
     AsciiBlock.print(pen, new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c}));
+    pen.println((new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c})).eqv(new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c})));
+
 
     separator(pen);
     pen.printf("bottom composition \n");
