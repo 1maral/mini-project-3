@@ -71,60 +71,40 @@ public class HComp implements AsciiBlock {
    *   if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
-    int max = this.blocks[0].height();
-    int min = this.blocks[0].height();
     String madeline = "";
 
-    for (int a = 1; a < this.blocks.length; a++) {
-      if (this.blocks[a].height() > max) {
-        max = this.blocks[a].height();
-      } else if (this.blocks[a].height() < min) {
-        min = (this.blocks[a].height());
-      }
-    }
+    if ((i < 0) || (i >= this.height())) {
+      // Outside of normal bounds
+      throw new Exception("Invalid row " + i);
+    } // if
 
-    if (VAlignment.TOP.equals(this.align)){
-      for (AsciiBlock block : this.blocks) {
-        if ((i < 0) || (i >= this.height())) {
-            // Outside of normal bounds
-            throw new Exception("Invalid row " + i);
-        } else if (i < block.height()) {
-            madeline += block.row(i);
-        } else if (i > block.height()) {
-            madeline += " ".repeat(block.width());
-        }
-      }
-    }
+    for (AsciiBlock block : this.blocks) {
+      if (block.height() == this.height()) {
+        madeline += block.row(i);
+      } // if
 
-    if (VAlignment.CENTER.equals(this.align)){
-      for (AsciiBlock block : this.blocks) {
-        if ((i < 0) || (i >= this.height())) {
-            // Outside of normal bounds
-            throw new Exception("Invalid row " + i);
-        } else if ((i >= Math.floor((max - this.height()) / 2) && (i < Math.ceil((max - this.height()) / 2)))){
-            madeline += block.row(i);
-        } else if (block.height() == max) {
-            madeline += block.row(i);
+      if (VAlignment.TOP.equals(this.align)) {
+        if (i < block.height()) {
+          madeline += block.row(i);
         } else {
-            madeline += " ".repeat(block.width());
-        }
-      }
-    }
-
-    if (VAlignment.BOTTOM.equals(this.align)){
-      for (AsciiBlock block : this.blocks) {
-        if ((i < 0) || (i >= this.height())) {
-            // Outside of normal bounds
-            throw new Exception("Invalid row " + i);
-        } else if (block.height() == max) {
-            madeline += block.row(i);
-        } else if (i > (max - block.height())) {
-            madeline += block.row(i);
+          madeline += " ".repeat(block.width());
+        } // else
+      } else if (VAlignment.CENTER.equals(this.align)) {
+        if ((i >= Math.floor((this.height() - block.height()) / 2)
+              && (i < block.height() + Math.ceil((this.height() - block.height()) / 2)))) {
+          madeline += block.row(i - (int) Math.ceil((this.height() - block.height()) / 2));
         } else {
-            madeline += " ".repeat(block.width());
-        }
-      }
-    }
+          madeline += " ".repeat(block.width());
+        } // else
+      } else if (VAlignment.BOTTOM.equals(this.align)) {
+        if (i >= (this.height() - block.height())) {
+          madeline += block.row(i - (this.height() - block.height()));
+        } else {
+          madeline += " ".repeat(block.width());
+        } // else
+      } // else if
+    } // if
+
     return madeline;
   } // row(int)
 
@@ -134,7 +114,13 @@ public class HComp implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return Math.max(this.blocks[0].height(), this.blocks[1].height());
+    int max = 0;
+    for (AsciiBlock block : this.blocks) {
+      if (block.height() > max) {
+        max = block.height();
+      } // if
+    } // for (block)
+    return max;
   } // height()
 
   /**
@@ -143,7 +129,12 @@ public class HComp implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return this.blocks[0].width() + this.blocks[1].width();
+    int wid = 0;
+
+    for (AsciiBlock block : this.blocks) {
+      wid += block.width();
+    } // for
+    return wid;
   } // width()
 
   /**
@@ -156,6 +147,19 @@ public class HComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return ((other instanceof HComp) && (this.eqv((HComp) other)));
   } // eqv(AsciiBlock)
+
+  /**
+   * Determine if another HComp is structurally equivalent to this HComp.
+   *
+   * @param other
+   *   The HComp to compare to this HComp.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *    false otherwise.
+   */
+  public boolean eqv(HComp other) {
+    return (this.align == other.align) && (Arrays.equals(this.blocks, other.blocks));
+  } // eqv (HComp)
 } // class HComp

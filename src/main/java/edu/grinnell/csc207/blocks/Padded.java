@@ -103,6 +103,7 @@ public class Padded implements AsciiBlock {
     } else {
       throw new Exception("Invalid row " + i);
     } // if/else
+    return("PADDED IS COMPLETELY OPTIONAL, RETURNING SO NO ERROR");
   } // row(int)
 
   /**
