@@ -152,7 +152,7 @@ public class Blocks {
         new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
     
     separator(pen);
-    pen.printf("b10 = new Surrounded(\"A\") with '*'\n\n");
+    pen.printf("Surrounded for \"A\" with '*'\n\n");
     AsciiBlock.print(pen, new Surrounded(new Line("Hello"), 'p'));
     pen.println(new Surrounded(new Line("Hello"), 'p').eqv(new Surrounded(new Line("Hello"), 'p')));
     
@@ -161,27 +161,27 @@ public class Blocks {
     pen.println((new Line("Hello")).eqv(new Line("Hello")));
 
     separator(pen);
-    pen.printf("(new Grid(new Line(\"Hello\"), 3, 4))\n\n");
+    pen.printf("Grid for Line(\"Hello\"), 3, 4)\n\n");
     AsciiBlock.print(pen, new Grid(new Line("Hello"), 3, 4));
     pen.println((new Grid(new Line("Hello"), 3, 4)).eqv(new Grid(new Line("Hello"), 3, 4)));
     
     separator(pen);
-    pen.printf("(new Grid(new Boxed(new Line(\"Hello\")), 3, 2))\n\n");
+    pen.printf("Grid for Boxed(new Line(\"Hello\")), 3, 2)\n\n");
     AsciiBlock.print(pen, new Grid(new Boxed(new Line("Hello")), 3, 2));
     pen.println((new Grid(new Boxed(new Empty()), 3, 2)).eqv(new Grid(new Boxed(new Empty()), 3, 2)));
     
     separator(pen);
-    pen.printf("(new Grid(new Boxed(new Empty()), 3, 2))\n\n");
+    pen.printf("Grid for Boxed(new Empty()), 3, 2) \n\n");
     AsciiBlock.print(pen, (new Grid(new Boxed(new Empty()), 3, 2)));
     pen.println((new Grid(new Boxed(new Empty()), 3, 2)).eqv(new Grid(new Boxed(new Empty()), 3, 2)));
     
     separator(pen);
-    pen.printf("new HFlip(new Line(\"Hello\")\n\n");
+    pen.printf("HFlip for \"Hello\"\n\n");
     AsciiBlock.print(pen, new HFlip(new Line("Hello")));
     pen.println((new HFlip(new Line("Hello"))).eqv(new HFlip(new Line("Hello"))));
     
     separator(pen);
-    pen.printf("new HFlip(new Lines({\"this\", \"and\", \"that\"}))\n\n");
+    pen.printf("HFlip for \"this\", \"and\", \"that\"\n\n");
     AsciiBlock.print(pen, new HFlip(new Lines(new String[] {"this", "and", "that"})));
     pen.println(
     (new HFlip(new Lines(new String[] {"Hello", "this"})))
@@ -189,7 +189,7 @@ public class Blocks {
     );
 
     separator(pen);
-    pen.printf("new VFlip(new Lines({\"this\", \"and\", \"that\"}))\n\n");
+    pen.printf("VFLip for \"this\", \"and\", \"that\"\n\n");
     AsciiBlock.print(pen, new VFlip(new Lines(new String[] {"this", "and", "that"})));
     pen.println(
     (new VFlip(new Lines(new String[] {"Hello", "this"})))
@@ -197,35 +197,34 @@ public class Blocks {
     );
 
     separator(pen);
-    pen.printf("top composition \n");
+    pen.printf("HComp top composition \n");
     AsciiBlock.print(pen, new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c}));
     pen.println((new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c})).eqv(new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c})));
 
     separator(pen);
-    pen.printf("center composition \n");
+    pen.printf("HComp center composition \n");
     AsciiBlock.print(pen, new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c}));
     pen.println((new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c})).eqv(new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c})));
 
-
     separator(pen);
-    pen.printf("bottom composition \n");
+    pen.printf("HComp bottom composition \n");
     AsciiBlock.print(pen, new HComp(VAlignment.BOTTOM, new AsciiBlock[] {a, b, c}));
 
     separator(pen);
-    pen.printf("left composition \n");
+    pen.printf("VComp left composition \n");
     AsciiBlock.print(pen,new VComp(HAlignment.LEFT, new AsciiBlock[] {v1, v7, v11, v19}));
 
     separator(pen);
-    pen.printf("center composition \n");
+    pen.printf("VComp center composition \n");
     AsciiBlock.print(pen,new VComp(HAlignment.CENTER, new AsciiBlock[] {v1, v7, v11, v19, v1}));
     
 
     separator(pen);
-    pen.printf("right composition \n");
+    pen.printf("VComp right composition \n");
     AsciiBlock.print(pen,new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
 
     separator(pen);
-    pen.printf("Create a ladder \n");
+    pen.printf("NewBlock: Create a ladder \n");
     AsciiBlock.print(pen, new Ladder(new Line("====="), 3, '|'));
 
     

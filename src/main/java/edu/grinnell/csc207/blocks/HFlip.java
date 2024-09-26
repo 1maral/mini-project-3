@@ -47,12 +47,13 @@ public class HFlip implements AsciiBlock {
   public String row(int i) throws Exception {
     int h = this.block.height();
     if ((i >= 0) && (i < h)) {
-      // Stuff within the box
+      // New string within our rows
       char[] rowStr = (this.block.row(i)).toCharArray();
       String revStr = "";
+      // creating a new string starting from the end of charArr
       for (int x = this.block.width() - 1; x >= 0; x--){
         revStr += rowStr[x];
-      }
+      } // for
       return revStr;
     } else {
       throw new Exception("Invalid row " + i);
