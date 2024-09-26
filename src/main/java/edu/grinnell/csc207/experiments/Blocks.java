@@ -9,6 +9,7 @@ import edu.grinnell.csc207.blocks.Grid;
 import edu.grinnell.csc207.blocks.HAlignment;
 import edu.grinnell.csc207.blocks.HComp;
 import edu.grinnell.csc207.blocks.HFlip;
+import edu.grinnell.csc207.blocks.Ladder;
 import edu.grinnell.csc207.blocks.Line;
 import edu.grinnell.csc207.blocks.Lines;
 import edu.grinnell.csc207.blocks.Rect;
@@ -222,6 +223,10 @@ public class Blocks {
     separator(pen);
     pen.printf("right composition \n");
     AsciiBlock.print(pen,new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
+
+    separator(pen);
+    pen.printf("Create a ladder \n");
+    AsciiBlock.print(pen, new Ladder(new Line("====="), 3, '|'));
     pen.close();
   } // main(String[])
 } // class Blocks
