@@ -65,9 +65,9 @@ public class Ladder implements AsciiBlock {
     } // if
 
     if (i % 2 == 0) {
-      madeline += sides + this.stepElement + sides;
+      madeline += sides + this.stepElement.row(0) + sides;
     } else {
-      madeline += sides + this.stepElement.width() + sides;
+      madeline += sides + " ".repeat(this.stepElement.width()) + sides;
     }
 
     return madeline;
