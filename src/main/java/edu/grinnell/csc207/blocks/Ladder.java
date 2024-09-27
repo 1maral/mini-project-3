@@ -1,5 +1,11 @@
 package edu.grinnell.csc207.blocks;
 
+/**
+ * A ladder of a character side with vertical repetions.
+ *
+ * @author Samuel A. Rebelsky
+ * @author Maral Bat-Erdene, Jake Bell
+ */
 public class Ladder implements AsciiBlock {
     // +--------+------------------------------------------------------------
   // | Fields |
@@ -27,18 +33,18 @@ public class Ladder implements AsciiBlock {
   /**
    * Build a new grid with the specified arrangement.
    *
-   * @param stepElement
+   * @param stepBlock
    *   What the ladder steps will be made of, must have height of 1.
-   * @param stepRepitions
+   * @param hRep
    *   The number of vertical repetitions in the grid.
-   * @param sideRail
+   * @param sideChar
    *   The character of the side rail of the ladder.
    */
-  public Ladder(AsciiBlock stepElement, int stepRepetitions,
-      char sideRail) {
-    this.stepElement = stepElement;
-    this.stepRepetitions = stepRepetitions;
-    this.sideRail = sideRail;
+  public Ladder(AsciiBlock stepBlock, int hRep,
+      char sideChar) {
+    this.stepElement = stepBlock;
+    this.stepRepetitions = hRep;
+    this.sideRail = sideChar;
   } // Ladder(AsciiBlock, int, char)
 
   // +---------+-----------------------------------------------------------
@@ -81,8 +87,8 @@ public class Ladder implements AsciiBlock {
   public int height() {
     if (this.stepElement.width() == 0) {
       return 0;
-    }
-    return ((this.stepRepetitions - 1) * 2) + 1; 
+    } // if
+    return ((this.stepRepetitions - 1) * 2) + 1;
   } // height()
 
   /**
@@ -93,8 +99,8 @@ public class Ladder implements AsciiBlock {
   public int width() {
     if (this.stepElement.width() == 0) {
       return 0;
-    }
-    return this.stepElement.width() + 2;   // STUB
+    } // if
+    return this.stepElement.width() + 2;
   } // width()
 
   /**
