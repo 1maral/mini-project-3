@@ -129,4 +129,4 @@ public class Ladder implements AsciiBlock {
     return (this.sideRail == other.sideRail) && (this.stepRepetitions == other.stepRepetitions)
         && (this.stepElement.eqv(other.stepElement));
   } // eqv(Grid)
-}
+} // class Ladder

@@ -80,7 +80,7 @@ public class VComp implements AsciiBlock {
     for (int j = 0; sum + this.blocks[j].height() <= i; j++) {
       sum += this.blocks[j].height();
       count++;
-    }
+    } // for
 
     index = i - sum;
 
@@ -92,24 +92,24 @@ public class VComp implements AsciiBlock {
       return madeline;
     } // if
 
-    
     switch (this.align) {
       case LEFT:
-        madeline += this.blocks[count].row(index) + " ".repeat(this.width() - this.blocks[count].width());
+        madeline += this.blocks[count].row(index)
+            + " ".repeat(this.width() - this.blocks[count].width());
         break;
       case CENTER:
         madeline += " ".repeat((int) Math.floor((this.width() - this.blocks[count].width()) / 2))
-        + this.blocks[count].row(index) + " ".repeat((int) Math.ceil((double) (this.width() - this.blocks[count].width()) / 2));
-        int checktop = ((int) Math.floor((this.width() - this.blocks[count].width()) / 2));
-        int checkbottom = ((int) Math.ceil((this.width() - this.blocks[count].width()) / 2));
+            + this.blocks[count].row(index)
+            + " ".repeat((int) Math.ceil((double) (this.width() - this.blocks[count].width()) / 2));
         break;
       case RIGHT:
-        madeline += " ".repeat(this.width() - this.blocks[count].width()) + this.blocks[count].row(index);
+        madeline += " ".repeat(this.width()
+            - this.blocks[count].width()) + this.blocks[count].row(index);
         break;
       default:
         madeline = "ERROR: WRONG ALIGNMENT";
         break;
-      } // switch
+    } // switch
 
     return madeline;
   } // row(int)
@@ -125,7 +125,7 @@ public class VComp implements AsciiBlock {
     for (AsciiBlock block : this.blocks) {
       len += block.height();
     } // for
-    return len;   // STUB
+    return len;
   } // height()
 
   /**
