@@ -42,12 +42,14 @@ public class Art80x24 {
 
     // Creating the hair + forehead of the character
     // First Layer
-    AsciiBlock hair1 = new Grid(black,8,1);
+    AsciiBlock hair1 = new Grid(black, 8, 1);
     // Second Layer
-    AsciiBlock hair2 = new HComp(VAlignment.CENTER, new AsciiBlock[] {black, new Grid(skin,6,1), black});
+    AsciiBlock hair2 = new HComp(VAlignment.CENTER, new
+          AsciiBlock[] {black, new Grid(skin, 6, 1), black});
     // Third layer
-    AsciiBlock skinLayer = new Grid(skin,8,1);
-    AsciiBlock foreheadFull = new VComp(HAlignment.CENTER, new AsciiBlock[] {hair1, hair2, skinLayer});
+    AsciiBlock skinLayer = new Grid(skin, 8, 1);
+    AsciiBlock foreheadFull =
+        new VComp(HAlignment.CENTER, new AsciiBlock[] {hair1, hair2, skinLayer});
 
     // Creating the eye layer of the character
     AsciiBlock eye1 = new HComp(VAlignment.CENTER, new AsciiBlock[] {skin, white, black, skin});
@@ -56,27 +58,31 @@ public class Art80x24 {
     AsciiBlock eyeFull = new HComp(VAlignment.CENTER, new AsciiBlock[] {eye1, eye2});
 
     // Creating the nose layer of the character
-    AsciiBlock nose1 = new HComp(VAlignment.CENTER, new AsciiBlock[] {new Grid(skin,3,1), nose});
+    AsciiBlock nose1 = new HComp(VAlignment.CENTER, new AsciiBlock[] {new Grid(skin, 3, 1), nose});
     // Flipping the first nose to create second nose
     AsciiBlock nose2 = new HFlip(nose1);
     AsciiBlock noseFull = new HComp(VAlignment.CENTER, new AsciiBlock[] {nose1, nose2});
 
     // Creating the first mouth layer of the character
-    AsciiBlock mouth1 = new HComp(VAlignment.CENTER, new AsciiBlock[] {new Grid(skin,2,1), black, skin});
+    AsciiBlock mouth1 = new HComp(VAlignment.CENTER,
+        new AsciiBlock[] {new Grid(skin, 2, 1), black, skin});
     // Flipping the first mouth to create second mouth
     AsciiBlock mouth2 = new HFlip(mouth1);
     AsciiBlock mouth3 = new HComp(VAlignment.CENTER, new AsciiBlock[] {mouth1, mouth2});
     // Creating the second mouth layer of the character
-    AsciiBlock mouth4 = new HComp(VAlignment.CENTER, new AsciiBlock[] {skin, skin, new Grid(black,4,1), skin, skin});
+    AsciiBlock mouth4 = new HComp(VAlignment.CENTER, new AsciiBlock[]
+          {skin, skin, new Grid(black, 4, 1), skin, skin});
     AsciiBlock mouthFull = new VComp(HAlignment.CENTER, new AsciiBlock[] {mouth3, mouth4});
 
-    AsciiBlock art = new VComp(HAlignment.CENTER, new AsciiBlock[] {foreheadFull, eyeFull, noseFull, mouthFull, skinLayer});
+    AsciiBlock art = new VComp(HAlignment.CENTER,
+        new AsciiBlock[] {foreheadFull, eyeFull, noseFull, mouthFull, skinLayer});
 
     // Printing our art to the terminal.
     AsciiBlock.print(pen, art);
 
     // Outro
-    pen.printf("We hereby demonstrate that our artwork has a width of %d and a height of %d.\n\n", art.width(), art.height());
+    pen.printf("We hereby demonstrate that our artwork has a width of %d and a height of %d.\n\n",
+        art.width(), art.height());
     pen.close();
   } // main(String[])
 } // class Art80x24

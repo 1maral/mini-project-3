@@ -124,6 +124,6 @@ public class Lines implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(Lines other) {
-    return (this.width == other.width)&&(Arrays.equals(this.lines, other.lines));
+    return (this.width == other.width) && (Arrays.equals(this.lines, other.lines));
   } // eqv(Lines)
 } // class Lines

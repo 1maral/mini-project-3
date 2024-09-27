@@ -81,6 +81,15 @@ public class Line implements AsciiBlock {
     return ((other instanceof Line) && (this.eqv((Line) other)));
   } // eqv(AsciiBlock)
 
+  /**
+   * Determine if another line is structurally equivalent to this line.
+   *
+   * @param other
+   *   The line to compare to this line.
+   *
+   * @return true if the two lines are structurally equivalent and
+   *    false otherwise.
+   */
   public boolean eqv(Line other) {
     return (this.line.equals(other.line));
   } // eqv(Line)

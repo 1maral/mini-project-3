@@ -51,7 +51,7 @@ public class HFlip implements AsciiBlock {
       char[] rowStr = (this.block.row(i)).toCharArray();
       String revStr = "";
       // creating a new string starting from the end of charArr
-      for (int x = this.block.width() - 1; x >= 0; x--){
+      for (int x = this.block.width() - 1; x >= 0; x--) {
         revStr += rowStr[x];
       } // for
       return revStr;

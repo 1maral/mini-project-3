@@ -101,6 +101,15 @@ public class Rect implements AsciiBlock {
     return ((other instanceof Rect) && (this.eqv((Rect) other)));
   } // eqv(AsciiBlock)
 
+  /**
+   * Determine if another rectangle is structurally equivalent to this rectangle.
+   *
+   * @param other
+   *   The rectangle to compare to this rectangle.
+   *
+   * @return true if the two rectangles are structurally equivalent and
+   *    false otherwise.
+   */
   public boolean eqv(Rect other) {
     return ((this.row.equals(other.row)) && (this.height == other.height));
   } // eqv(Rect)

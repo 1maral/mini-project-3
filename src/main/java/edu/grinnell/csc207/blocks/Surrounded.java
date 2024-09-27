@@ -84,7 +84,7 @@ public class Surrounded implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return (this.contents.width() + 2);  
+    return (this.contents.width() + 2);
   } // width()
 
   /**
@@ -101,6 +101,15 @@ public class Surrounded implements AsciiBlock {
     return ((other instanceof Surrounded) && (this.eqv((Surrounded) other)));
   } // eqv(AsciiBlock)
 
+  /**
+   * Determine if another surrounded object is structurally equivalent to this surrounded object.
+   *
+   * @param other
+   *   The surrounded object to compare to this surrounded object.
+   *
+   * @return true if the two surrounded objects are structurally equivalent and
+   *    false otherwise.
+   */
   public boolean eqv(Surrounded other) {
     return (this.contents.eqv(other.contents)) && (this.surroundChar.equals(other.surroundChar));
   } // eqv(Surrounded)

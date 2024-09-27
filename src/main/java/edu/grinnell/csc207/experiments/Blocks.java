@@ -150,61 +150,41 @@ public class Blocks {
         new VComp(HAlignment.CENTER, new AsciiBlock[] {v1, v7, v11, v19}));
     figure(pen, "Left composition",
         new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
-    
+
     separator(pen);
     pen.printf("Surrounded for \"A\" with '*'\n\n");
     AsciiBlock.print(pen, new Surrounded(new Line("Hello"), 'p'));
-    pen.println(new Surrounded(new Line("Hello"), 'p').eqv(new Surrounded(new Line("Hello"), 'p')));
-    
-    separator(pen);
-    AsciiBlock.print(pen, new Line("Hello"));
-    pen.println((new Line("Hello")).eqv(new Line("Hello")));
 
-    separator(pen);
-    pen.printf("Grid for Line(\"Hello\"), 3, 4)\n\n");
-    AsciiBlock.print(pen, new Grid(new Line("Hello"), 3, 4));
-    pen.println((new Grid(new Line("Hello"), 3, 4)).eqv(new Grid(new Line("Hello"), 3, 4)));
-    
     separator(pen);
     pen.printf("Grid for Boxed(new Line(\"Hello\")), 3, 2)\n\n");
     AsciiBlock.print(pen, new Grid(new Boxed(new Line("Hello")), 3, 2));
-    pen.println((new Grid(new Boxed(new Empty()), 3, 2)).eqv(new Grid(new Boxed(new Empty()), 3, 2)));
-    
+
     separator(pen);
     pen.printf("Grid for Boxed(new Empty()), 3, 2) \n\n");
     AsciiBlock.print(pen, (new Grid(new Boxed(new Empty()), 3, 2)));
-    pen.println((new Grid(new Boxed(new Empty()), 3, 2)).eqv(new Grid(new Boxed(new Empty()), 3, 2)));
-    
+
     separator(pen);
     pen.printf("HFlip for \"Hello\"\n\n");
     AsciiBlock.print(pen, new HFlip(new Line("Hello")));
     pen.println((new HFlip(new Line("Hello"))).eqv(new HFlip(new Line("Hello"))));
-    
+
     separator(pen);
     pen.printf("HFlip for \"this\", \"and\", \"that\"\n\n");
     AsciiBlock.print(pen, new HFlip(new Lines(new String[] {"this", "and", "that"})));
-    pen.println(
-    (new HFlip(new Lines(new String[] {"Hello", "this"})))
-    .eqv(new HFlip(new Lines(new String[] {"Hello", "this"})))
-    );
 
     separator(pen);
     pen.printf("VFLip for \"this\", \"and\", \"that\"\n\n");
     AsciiBlock.print(pen, new VFlip(new Lines(new String[] {"this", "and", "that"})));
-    pen.println(
-    (new VFlip(new Lines(new String[] {"Hello", "this"})))
-    .eqv(new VFlip(new Lines(new String[] {"Hello", "this"})))
-    );
 
     separator(pen);
     pen.printf("HComp top composition \n");
     AsciiBlock.print(pen, new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c}));
-    pen.println((new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c})).eqv(new HComp(VAlignment.TOP, new AsciiBlock[] {a, b, c})));
 
     separator(pen);
     pen.printf("HComp center composition \n");
     AsciiBlock.print(pen, new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c}));
-    pen.println((new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c})).eqv(new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c})));
+    pen.println((new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c})).
+            eqv(new HComp(VAlignment.CENTER, new AsciiBlock[] {a, b, c})));
 
     separator(pen);
     pen.printf("HComp bottom composition \n");
@@ -212,22 +192,20 @@ public class Blocks {
 
     separator(pen);
     pen.printf("VComp left composition \n");
-    AsciiBlock.print(pen,new VComp(HAlignment.LEFT, new AsciiBlock[] {v1, v7, v11, v19}));
+    AsciiBlock.print(pen, new VComp(HAlignment.LEFT, new AsciiBlock[] {v1, v7, v11, v19}));
 
     separator(pen);
     pen.printf("VComp center composition \n");
-    AsciiBlock.print(pen,new VComp(HAlignment.CENTER, new AsciiBlock[] {v1, v7, v11, v19, v1}));
-    
+    AsciiBlock.print(pen, new VComp(HAlignment.CENTER, new AsciiBlock[] {v1, v7, v11, v19, v1}));
 
     separator(pen);
     pen.printf("VComp right composition \n");
-    AsciiBlock.print(pen,new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
+    AsciiBlock.print(pen, new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
 
     separator(pen);
     pen.printf("NewBlock: Create a ladder \n");
     AsciiBlock.print(pen, new Ladder(new Line("====="), 3, '|'));
 
-    
     pen.close();
   } // main(String[])
 } // class Blocks
